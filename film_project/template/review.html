@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+
+<section class="product_section layout_padding">
+         <div class="container">
+            <div class="heading_container heading_center">
+               <h2>Add <span>Review</span></h2>
+            </div>
+         </div>
+    </section>
+
+<!-- review_add.html -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+
+{% endblock %}

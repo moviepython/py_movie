@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport"
+    content="width=device-width,initial-scale=1">
+    <style>
+        body,html{
+
+                  height: 100%;
+                  font-family:Arial,Helvetica,sans-serif;}
+        *{
+          box-sizing:border-box;
+          }
+        .bg-img{
+                background-image:
+                url("secondweb.jpg");
+                min-height: 380x;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;}
+        .container{
+                   position: center;
+                   right:3;
+                   margin: 20px;
+                   max-width: 300px;
+                   padding; 16px;
+                   background-color: white;}
+        input[type=text],
+        input[type=password]{
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;}
+
+        input[type=text]:
+        input[type=password]:{
+            background-color: #ddd;
+            outline: none;}
+        .btn{
+        background-color: #04AA6D;
+        color: white;
+        padding:16px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;}
+    .btn:{
+          opacity: 1;}
+
+    </style>
+</head>
+<body>
+{% for msg in messages %}
+  <div class="alert alert-success" role="alert">
+  {{msg}}
+</div>
+{% endfor %}
+<center>
+<h2>LOGIN</h2>
+ <div class="bg-img">
+     <form action="" method="post" class="container">
+          {% csrf_token %}
+         <label for="uesrname"><b>Name</b></label>
+         <input type="text" name="username" placeholder="enter ur name">
+         <label for="password"><b>Password</b></label>
+         <input type="password" name="password" placeholder="enter password">
+         <button type="submit" class="btn">Login</button>
+     </form>
+ </div>
+</center></p>
+</body>
+</html>
+
+
+
+

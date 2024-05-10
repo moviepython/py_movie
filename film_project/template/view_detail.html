@@ -1,0 +1,132 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+   <head>
+      <!-- Basic -->
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <!-- Mobile Metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <!-- Site Metas -->
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="">
+      <title> Our movies </title>
+      <!-- bootstrap core css -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+      <!-- font awesome style -->
+      <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+      <!-- Custom styles for this template -->
+      <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+      <!-- responsive style -->
+      <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://kit.fontawesome.com/3aef58dc40.js" crossorigin="anonymous"></script>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+      <link href="{% static 'css/custom.css' %}" rel="stylesheet" title="text/css/">
+
+   </head>
+
+   <body class="sub_page">
+             <div class="hero_area">
+         <!-- header section strats -->
+         <header class="header_section">
+            <div class="container">
+               <nav class="navbar navbar-expand-lg custom_nav-container ">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class=""> </span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav">
+                        <li class="nav-item">
+                           <a class="nav-link" href="{% url 'film_app:movie' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                           <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+         </header>
+         <!-- end header section -->
+      </div>
+      <section class="inner_page_head">
+             <div class="container_fuild">
+               <div class="row">
+                 <div class="col-md-12">
+                  <div class="full">
+                     <h3>Movies</h3>
+                  </div>
+                 </div>
+               </div>
+             </div>
+      </section>
+   <div class="row">
+      <div class="col-md-8">
+
+      <!-- inner page section -->
+
+      <!-- product section -->
+      <section class="product_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-9 col-md-8 col-lg-12">
+                  <div class="box">
+                     <div class="img-box">
+                        <img src="{{list_movie.image.url}}" alt="">
+                     </div>
+                     <center><h2>{{list_movie.movies_name}}</h2></center><br>
+                        <h6>Release date : {{list_movie.year}}</h6><br>
+                        <h6>Actress : {{list_movie.f_name}}</h6><br>
+                        <h6>Actor : {{list_movie.m_name}}</h6><br>
+                        <h6>Link : <p class="text-info">{{list_movie.link}}</p></h6>
+                        <p>{{list_movie.desc}}</p><br>
+                  </div>
+                  <a href="{% url 'edit' list_movie.id %}" class="option1"><button type="button" class="btn btn-success">Edit</button></a><br>
+                  <a href="{% url 'delete' list_movie.id %}" class="option1"><button type="button" class="btn btn-danger">Delete</button></a><br>
+                  <a href="{% url 'review_add' list_movie.id %}"><button type="button" class="btn btn-info">review</button></a>
+               </div>
+            </div>
+         </div>
+      </section>
+      </div>
+   </div>
+
+    <section class="product_section layout_padding">
+         <div class="container">
+            <div class="heading_container heading_center">
+               <h2>Custem <span>Review</span></h2>
+            </div>
+         </div>
+    </section>
+ {% for i in review %}
+<section class="product_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-8 col-lg-4">
+                <div class="box">
+                   <center>
+                   <h6>{{i.user}}</h6>
+                   <p>{{i.review_text}}</p>
+                   <p>{{i.rating}}</p>
+                   </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+
+
+
+
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   </body>
+</html>
